@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b3b">
+<title>Ski-Team Challenge Disentis</title>
+<style>
+:root{--navy:#102b3b;--blue:#1e536a;--ice:#eaf4f7;--snow:#fff;--lime:#d7f36b;--muted:#5c7079;--line:#d7e3e8;--radius:22px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#f1f6f8;color:var(--navy);line-height:1.5}
+button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #70b6d0;outline-offset:3px}
+.app{max-width:760px;margin:auto;min-height:100vh;background:#f1f6f8}
+header{background:var(--navy);color:white;padding:25px 22px 30px;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;width:210px;height:210px;border:1px solid #ffffff25;border-radius:50%;right:-70px;top:-85px;box-shadow:0 0 0 25px #ffffff09,0 0 0 55px #ffffff07}
+.eyebrow{font-size:.76rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}
+h1{font-size:clamp(2rem,8vw,3.2rem);line-height:1.02;letter-spacing:-.045em;margin:12px 0}
+header p{max-width:490px;color:#d2e3e9;margin:0}
+main{padding:18px;display:grid;gap:16px}
+.card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 6px 24px #102b3b08}
+h2{font-size:1.28rem;letter-spacing:-.02em;margin:0 0 8px}
+h3{margin:0 0 7px;font-size:1.04rem}
+.muted{color:var(--muted);font-size:.94rem}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;background:var(--ice);color:var(--blue);padding:5px 10px;border-radius:999px;font-size:.78rem;font-weight:800}
+label{display:block;font-size:.9rem;font-weight:700;margin:14px 0 6px}
+input{width:100%;border:1px solid #c6d8df;border-radius:12px;padding:13px 14px;background:#fff;color:var(--navy);font-size:16px}
+.btn{border:0;border-radius:13px;padding:13px 17px;min-height:48px;font-weight:800;transition:transform .12s,filter .12s}
+.btn:active{transform:scale(.98)}.primary{background:var(--lime);color:var(--navy)}.dark{background:var(--navy);color:white}.light{background:var(--ice);color:var(--navy);border:1px solid var(--line)}.full{width:100%}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.btnrow .btn{flex:1}
+.codebox{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--ice);border:1px dashed #a6c6d2;border-radius:15px;padding:15px;margin:13px 0}
+.code{font-size:1.7rem;font-weight:900;letter-spacing:.16em}
+.small{font-size:.8rem;color:var(--muted)}
+.hidden{display:none!important}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tab{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:white;font-weight:750}.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.task-emoji{font-size:2.7rem;margin:9px 0}
+.options{display:grid;gap:9px;margin-top:16px}.option{text-align:left;padding:13px 14px;border-radius:13px;border:1px solid var(--line);background:white;color:var(--navy);font-weight:650;min-height:48px}.option.selected{border-color:var(--blue);background:var(--ice);box-shadow:inset 0 0 0 1px var(--blue)}
+.progress{height:7px;border-radius:99px;background:#e4edf0;overflow:hidden;margin:13px 0}.progress span{display:block;height:100%;background:var(--blue);width:0;transition:width .2s}
+.notice{padding:12px 14px;border-radius:12px;background:#f2f8dc;color:#35451b;font-size:.9rem;margin-top:12px}
+.person{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.person:last-child{border-bottom:0}.avatar{width:38px;height:38px;border-radius:50%;background:var(--ice);display:grid;place-items:center;font-weight:900;flex-shrink:0}.person-left{display:flex;align-items:center;gap:10px;min-width:0}.person-name{font-weight:800;overflow-wrap:anywhere}.score{font-weight:900}
+footer{text-align:center;padding:4px 22px 28px;color:var(--muted);font-size:.8rem}
+@media(min-width:600px){main{padding:24px}.card{padding:24px}header{padding:32px 28px 36px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="eyebrow">⛷ Einführungswochenende · Disentis</div>
+  <h1>Ski-Team<br>Challenge.</h1>
+  <p>Neue Leute kennenlernen. Gemeinsam lachen. Als Team durchstarten.</p>
+</header>
+<main>
+<section class="card" id="setup">
+  <div class="row"><span class="pill">📱 Handy-Spiel</span><span class="small">Keine App nötig</span></div>
+  <h2 style="margin-top:13px">Willkommen im Team!</h2>
+  <p class="muted">Erstelle eine Spielrunde oder tritt mit einem Spielcode bei. Für eine echte gemeinsame Live-Runde müssen alle denselben Code verwenden und ihre Punkte in dieser Demo jeweils selbst eintragen.</p>
+  <div class="tabs"><button class="tab active" data-mode="host">Spielrunde starten</button><button class="tab" data-mode="join">Spiel beitreten</button></div>
+  <div id="host-form">
+    <label for="host-name">Dein Name</label><input id="host-name" maxlength="24" placeholder="z. B. Alex">
+    <div class="btnrow"><button class="btn primary full" id="create">Spielcode erstellen →</button></div>
+  </div>
+  <div id="join-form" class="hidden">
+    <label for="join-name">Dein Name</label><input id="join-name" maxlength="24" placeholder="Dein Vorname oder Spitzname">
+    <label for="join-code">Spielcode</label><input id="join-code" maxlength="6" placeholder="z. B. SKI247" autocapitalize="characters">
+    <div class="btnrow"><button class="btn dark full" id="join">Beitreten →</button></div>
+  </div>
+  <div id="setup-message" class="small" role="status"></div>
+</section>
+
+<section class="card hidden" id="lobby">
+  <div class="row"><span class="pill">🏔️ Deine Spielrunde</span><span class="small" id="player-count">1 Person</span></div>
+  <div class="codebox"><div><div class="small">TEILE DIESEN CODE MIT DEINER GRUPPE</div><div class="code" id="room-code">SKI247</div></div><button class="btn light" id="copy-code">Code kopieren</button></div>
+  <p class="muted" id="lobby-message">Andere öffnen dieselbe HTML-Seite auf ihrem Handy und geben den Code ein.</p>
+  <div id="players"></div>
+  <div class="notice">Hinweis: Diese einzelne HTML-Datei ist eine funktionierende Demo. Ohne Online-Backend werden Spieler auf verschiedenen Geräten nicht automatisch synchronisiert.</div>
+  <div class="btnrow"><button class="btn primary full" id="start-game">Challenges starten 🎿</button><button class="btn light" id="reset">Neu beginnen</button></div>
+</section>
+
+<section class="card hidden" id="game">
+  <div class="row"><span class="pill" id="category">Kennenlernen</span><span class="small" id="task-count">Aufgabe 1 von 10</span></div>
+  <div class="progress"><span id="progress"></span></div>
+  <div class="task-emoji" id="emoji">👋</div>
+  <h2 id="question">Finde drei Gemeinsamkeiten!</h2>
+  <p class="muted" id="description"></p>
+  <div class="options" id="options"></div>
+  <label for="proof">Was habt ihr herausgefunden? (optional)</label>
+  <input id="proof" maxlength="100" placeholder="z. B. Wir mögen beide Snowboarden">
+  <div class="row" style="margin-top:15px"><span class="pill" id="points">+100 Punkte</span><span class="small" id="completed">0 Aufgaben erledigt</span></div>
+  <div id="feedback" role="status" class="small" style="margin-top:9px"></div>
+  <div class="btnrow"><button class="btn primary full" id="complete">Aufgabe abschliessen ✓</button><button class="btn light" id="skip">Überspringen</button></div>
+</section>
+
+<section class="card hidden" id="finish">
+  <div class="task-emoji">🏆</div><h2>Stark gemacht, Team!</h2>
+  <p class="muted">Ihr habt eure Kennenlern-Challenges abgeschlossen. Zeit für eure gemeinsame Team-Mission!</p>
+  <div class="notice"><strong>Finale Mission:</strong> Erfindet einen Teamnamen und einen Schlachtruf für die Skischule Disentis. Ihr habt 60 Sekunden!</div>
+  <h3 style="margin-top:18px">Euer Ergebnis</h3><div id="final-score"></div>
+  <div class="btnrow"><button class="btn primary full" id="again">Nochmal spielen ↻</button><button class="btn light" id="back-lobby">Zur Lobby</button></div>
+</section>
+
+<section class="card hidden" id="ranking">
+  <div class="row"><h2>🏅 Punktestand</h2><span class="small">auf diesem Gerät</span></div>
+  <div id="leaderboard"></div>
+</section>
+</main>
+<footer>Gemacht für ein starkes Team in Disentis ❄️</footer>
+</div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const tasks=[
+{cat:'Kennenlernen',emoji:'👋',q:'Lerne jemanden neu kennen',d:'Stellt euch gegenseitig vor und fragt nach einem Hobby und einem Highlight im Winter.',opts:['Ich habe eine neue Person kennengelernt','Wir haben über unsere Hobbys gesprochen','Wir haben eine Gemeinsamkeit entdeckt'],pts:100},
+{cat:'Ski & Snowboard',emoji:'🎿',q:'Wie sieht dein perfekter Tag im Schnee aus?',d:'Wählt eure Lieblingsoption und erklärt einander kurz warum.',opts:['Früh auf die Piste','Freestyle & Action','Pulverschnee entdecken','Gemütliche Abfahrten mit Freunden'],pts:100},
+{cat:'Teamwork',emoji:'🤝',q:'Findet drei Gemeinsamkeiten',d:'Bildet kleine Gruppen. Findet drei Dinge, die auf alle zutreffen – aber nicht «Wir sind hier».',opts:['Wir haben drei Gemeinsamkeiten gefunden','Wir haben eine Gemeinsamkeit gefunden','Wir brauchen noch etwas Zeit'],pts:150},
+{cat:'Fun Fact',emoji:'✨',q:'Teile einen überraschenden Fakt über dich',d:'Erzähl etwas, das die anderen noch nicht über dich wissen – ein Talent, ein Erlebnis oder einen Traum.',opts:['Ich habe einen Fun Fact geteilt','Ich habe jemandem eine Frage gestellt','Wir haben gemeinsam gelacht'],pts:100},
+{cat:'Entweder – oder',emoji:'⚡',q:'Berge oder Meer?',d:'Alle zeigen gleichzeitig auf ihre Wahl. Findet heraus, wer ähnlich tickt!',opts:['🏔️ Berge','🌊 Meer','Beides!'],pts:75},
+{cat:'Skischul-Alltag',emoji:'🧑‍🏫',q:'Was macht eine gute Skilehrperson aus?',d:'Diskutiert, welche Eigenschaften im Unterricht am wichtigsten sind.',opts:['Geduld & Sicherheit','Humor & Motivation','Gute Erklärungen','Alles davon!'],pts:100},
+{cat:'Kennenlern-Bingo',emoji:'🔎',q:'Findet jemanden, der …',d:'Fragt in der Gruppe herum und findet eine Person, auf die eine Aussage zutrifft.',opts:['ein Haustier hat','mehr als zwei Sprachen spricht','schon im Ausland Ski gefahren ist','heute besonders früh aufgestanden ist'],pts:125},
+{cat:'Good Vibes',emoji:'💚',q:'Mach jemandem ein ehrliches Kompliment',d:'Sag einer Person etwas Nettes, das du an ihr schätzt. Niemand muss etwas Persönliches teilen.',opts:['Ich habe ein Kompliment gemacht','Ich habe ein Kompliment bekommen','Wir haben uns gegenseitig motiviert'],pts:100},
+{cat:'Team-Challenge',emoji:'💡',q:'Erfindet einen Teamnamen',d:'Ihr habt eine Minute. Der Name soll zu euch und zur Skischule passen.',opts:['Die Pistenfüchse 🦊','Die Gipfelstürmer 🏔️','Team Schneekristall ❄️','Wir haben einen eigenen Namen erfunden'],pts:150},
+{cat:'Finale',emoji:'🚀',q:'Was wünschst du dir für dieses Wochenende?',d:'Reihum nennt jede Person einen Wunsch für das gemeinsame Wochenende.',opts:['Neue Freundschaften','Viel Spass & gute Stimmung','Gemeinsam Neues lernen','Ein unvergessliches Wochenende'],pts:100}
+];
+let mode='host',code='',players=[],current=0,done=new Set(),earned=0,selected='',notes=[];
+const show=id=>$(id).classList.remove('hidden'),hide=id=>$(id).classList.add('hidden');
+function makeCode(){return 'SKI'+Math.floor(100+Math.random()*900)}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===b));$('host-form').classList.toggle('hidden',mode!=='host');$('join-form').classList.toggle('hidden',mode!=='join');$('setup-message').textContent=''}));
+function enterLobby(name,newRoom){name=name.trim().slice(0,24);if(!name){$('setup-message').textContent='Bitte gib zuerst einen Namen ein.';return}if(newRoom){code=makeCode();players=[]}else{const c=$('join-code').value.trim().toUpperCase();if(!/^SKI\d{3}$/.test(c)){$('setup-message').textContent='Bitte gib einen gültigen Spielcode ein (z. B. SKI247).';return}code=c}
+if(players.some(p=>p.name.toLowerCase()===name.toLowerCase()))name=name+' '+(players.length+1);
+players.push({name,score:0});current=0;done=new Set();earned=0;notes=[];$('room-code').textContent=code;$('lobby-message').textContent=newRoom?'Du hast die Runde erstellt. Teile den Code mit deiner Gruppe.':'Du bist dieser lokalen Demo-Runde beigetreten.';hide('setup');show('lobby');hide('game');hide('finish');show('ranking');renderPlayers()}
+$('create').addEventListener('click',()=>enterLobby($('host-name').value,true));
+$('join').addEventListener('click',()=>enterLobby($('join-name').value,false));
+function renderPlayers(){$('player-count').textContent=players.length+' '+(players.length===1?'Person':'Personen');$('players').innerHTML='';players.forEach(p=>{const d=document.createElement('div');d.className='person';const l=document.createElement('div');l.className='person-left';const a=document.createElement('div');a.className='avatar';a.textContent=p.name.slice(0,1).toUpperCase();const n=document.createElement('div');n.className='person-name';n.textContent=p.name;l.append(a,n);const s=document.createElement('span');s.className='score';s.textContent=p.score+' Pkt.';d.append(l,s);$('players').append(d)});renderBoard()}
+function renderBoard(){$('leaderboard').innerHTML='';[...players].sort((a,b)=>b.score-a.score).forEach((p,i)=>{const d=document.createElement('div');d.className='person';const l=document.createElement('div');l.className='person-left';const a=document.createElement('div');a.className='avatar';a.textContent=['🥇','🥈','🥉'][i]||String(i+1);const n=document.createElement('div');n.className='person-name';n.textContent=p.name;l.append(a,n);const s=document.createElement('span');s.className='score';s.textContent=p.score+' Pkt.';d.append(l,s);$('leaderboard').append(d)})}
+$('copy-code').addEventListener('click',async()=>{const text=$('room-code').textContent;try{await navigator.clipboard.writeText(text);$('copy-code').textContent='Kopiert ✓'}catch(e){$('lobby-message').textContent='Dein Spielcode: '+text+' — bitte manuell kopieren.'}});
+$('start-game').addEventListener('click',()=>{hide('lobby');hide('ranking');show('game');renderTask()});
+function renderTask(){const t=tasks[current];$('category').textContent=t.cat;$('task-count').textContent='Aufgabe '+(current+1)+' von '+tasks.length;$('emoji').textContent=t.emoji;$('question').textContent=t.q;$('description').textContent=t.d;$('points').textContent='+'+t.pts+' Punkte';$('completed').textContent=done.size+' Aufgaben erledigt';$('progress').style.width=(done.size/tasks.length*100)+'%';$('feedback').textContent='';$('proof').value='';selected='';$('options').innerHTML='';t.opts.forEach(opt=>{const b=document.createElement('button');b.type='button';b.className='option';b.textContent=opt;b.addEventListener('click',()=>{selected=opt;document.querySelectorAll('.option').forEach(o=>o.classList.toggle('selected',o===b))});$('options').append(b)});$('complete').textContent=done.has(current)?'Bereits erledigt ✓':'Aufgabe abschliessen ✓'}
+$('complete').addEventListener('click',()=>{if(done.has(current)){$('feedback').textContent='Diese Aufgabe ist bereits gewertet. Du kannst weitergehen.';return}if(!selected){$('feedback').textContent='Wähle eine Antwort aus, nachdem ihr die Aufgabe gemeinsam gemacht habt.';return}done.add(current);earned+=tasks[current].pts;const p=players[players.length-1];p.score+=tasks[current].pts;const note=$('proof').value.trim();if(note)notes.push(note);$('completed').textContent=done.size+' Aufgaben erledigt';$('progress').style.width=(done.size/tasks.length*100)+'%';$('feedback').textContent='Stark! +'+tasks[current].pts+' Punkte. '+(note?'Eure Notiz wurde für diese Runde gemerkt.':'');$('complete').textContent='Erledigt ✓';renderPlayers()});
+$('skip').addEventListener('click',()=>{if(current<tasks.length-1){current++;renderTask()}else finish()});
+function next(){if(current<tasks.length-1){current++;renderTask()}else finish()}
+$('complete').addEventListener('dblclick',next);
+const nextBtn=document.createElement('button');nextBtn.className='btn dark full';nextBtn.textContent='Nächste Aufgabe →';nextBtn.addEventListener('click',next);$('game').append(nextBtn);
+function finish(){hide('game');show('finish');show('ranking');$('final-score').textContent='Du hast '+done.size+' von '+tasks.length+' Aufgaben erledigt und '+earned+' Punkte gesammelt.';renderBoard()}
+$('again').addEventListener('click',()=>{current=0;done=new Set();earned=0;players.forEach(p=>p.score=0);hide('finish');hide('ranking');show('game');renderTask()});
+$('back-lobby').addEventListener('click',()=>{hide('finish');show('lobby');show('ranking');renderPlayers()});
+$('reset').addEventListener('click',()=>{players=[];code='';hide('lobby');hide('ranking');hide('game');hide('finish');show('setup');$('setup-message').textContent='';$('host-name').value='';$('join-name').value='';$('join-code').value=''});
+})();
+</script>
+</body>
+</html>
